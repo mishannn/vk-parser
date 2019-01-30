@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VKParser
+{
+    class LoginData
+    {
+        private static readonly string _username = "USERNAME IN BASE64";
+        private static readonly string _password = "PASSWORD IN BASE64";
+
+        public static string Username
+        {
+            get => Base64Decode(_username);
+        }
+
+        public static string Password
+        {
+            get => Base64Decode(_password);
+        }
+
+        private static string Base64Decode(string base64EncodedData)
+        {
+            byte[] base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+    }
+}
